@@ -1,0 +1,99 @@
+<!--
+File: js.js
+GUI Assignment: Using the jQuery Plugin/UI with Your Dynamic Table
+Andrew Belyea, UMass Lowell Computer Science, Andrew_Belyea@student.uml.edu
+Copyright (c) 2025 by Andrew. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by AB on November 26, 2025
+Sources: https://www.w3schools.com/
+-->
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Multiplication Table (jQuery Validation + UI)</title>
+
+  <!-- jQuery UI CSS (CDN) -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="css/css.css">
+
+  <!-- Small meta to avoid mobile zoom on input focus -->
+  <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+  <div id="tabs">
+    <ul>
+      <li><a href="#tab-input">Input / Controls</a></li>
+    </ul>
+
+    <!-- INPUT TAB (always present) -->
+    <div id="tab-input">
+      <div class="form">
+        <h1>Dynamic Multiplication Table</h1>
+        <p>Enter four numbers (range -50 to 50). Use sliders or type. Live preview updates as values change.</p>
+
+        <form id="mult_form" novalidate>
+          <fieldset>
+            <legend>Please enter the range of the multiplier (horizontal):</legend>
+
+            <label for="row1">Start</label>
+            <input type="text" id="row1" name="row1" placeholder="Start" />
+            <span class="row1Text errorSpan"></span>
+            <div id="slider_row1" class="slider"></div>
+
+            <br/>
+
+            <label for="row2">End</label>
+            <input type="text" id="row2" name="row2" placeholder="End" />
+            <span class="row2Text errorSpan"></span>
+            <div id="slider_row2" class="slider"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Please enter the range of the multiplicand (vertical):</legend>
+
+            <label for="col1">Start</label>
+            <input type="text" id="col1" name="col1" placeholder="Start" />
+            <span class="col1Text errorSpan"></span>
+            <div id="slider_col1" class="slider"></div>
+
+            <br/>
+
+            <label for="col2">End</label>
+            <input type="text" id="col2" name="col2" placeholder="End" />
+            <span class="col2Text errorSpan"></span>
+            <div id="slider_col2" class="slider"></div>
+          </fieldset>
+
+          <div class="controls">
+            <button type="button" id="generateBtn">Generate Table (preview)</button>
+            <button type="button" id="saveTabBtn">Save Table as Tab</button>
+            <button type="button" id="deleteSelectedBtn">Delete selected tabs</button>
+            <span id="warning_msg" class="warning"></span>
+          </div>
+        </form>
+
+        <h3>Live Preview</h3>
+        <div id="preview_table" class="preview"></div>
+      </div>
+    </div>
+
+    <!-- Dynamically appended table tabs will appear after this div -->
+  </div>
+
+  <!-- Main table output (kept for backward-compatibility; not used for saved tabs) -->
+  <div id="table" style="display:none;"></div>
+
+  <!-- JS libraries: jQuery, jQuery UI, jQuery Validate -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
+  <!-- Local JS -->
+  <script src="js/js.js"></script>
+</body>
+</html>
